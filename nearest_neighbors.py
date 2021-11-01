@@ -17,7 +17,17 @@ training image in the 2d array train[digit].
 """
 def compute_nearest_neighbors(train, testImage) :
     #Your code here
-    return None
+    norm = 1e10
+
+    for i in range(10):
+      for j in range(100):
+        norm2 = np.linalg.norm(testImage - train[i][j], ord=2)
+        if norm2 < norm:
+          norm = norm2
+          digit = i
+          imageID = j 
+      
+    return digit, imageID
 
 """
 Assumes the data file is in 'mnist_all.mat'.
